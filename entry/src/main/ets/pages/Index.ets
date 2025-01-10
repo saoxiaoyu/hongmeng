@@ -1,20 +1,37 @@
+let title : string = '汉堡'
+console.log(title)
+
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello';
 
   build() {
-    RelativeContainer() {
-      Text(this.message)
-        .id('HelloWorld')
-        .fontSize(50)
+    Column({space:30}){
+      Image($r('app.media.huawei'))
+        .width(100)
 
-        .alignRules({
-          center: { anchor: '__container__', align: VerticalAlign.Center },
-          middle: { anchor: '__container__', align: HorizontalAlign.Center }
-        })
+      TextInput({
+        placeholder:'请输入账号'
+      })
+
+      TextInput({
+        placeholder:'请输入密码'
+      })
+        .type(InputType.Password)
+
+      Button('登录')
+        .width(250)
+
+      Row({space:25}){
+        Text('前往注册')
+          .fontWeight(FontWeight.Bold)
+        Text('忘记密码')
+          .fontWeight(FontWeight.Bold)
+      }
     }
-    .height('100%')
-    .width('100%')
+    .margin(10)
+
+
   }
 }

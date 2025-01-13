@@ -6,54 +6,73 @@ struct Index {
   build() {
     Column(){
       Column(){
-        Image($r('app.media.position_moco'))
-          .height(210)
-          .width(168)
-          .borderRadius(20)
+        Stack(){
+          Image($r('app.media.bz_img'))
+            .width(200)
+            .height(125)
+          Row(){
+            Image($r('app.media.bz_play'))
+              .width(14)
+              .fillColor(Color.White)
+            Text('288万').fontColor(Color.White).fontWeight(FontWeight.Bold).fontSize(10)
+              .margin({
+                left:3
+              })
 
+            Image($r('app.media.bz_msg'))
+              .margin({
+                left:10
+              })
+              .width(14)
+              .fillColor(Color.White)
+            Text('8655').fontColor(Color.White).fontWeight(FontWeight.Bold).fontSize(10)
+              .margin({
+                left:3,
+                right:75
+              })
+
+
+
+            Text('4:33').fontColor(Color.White).fontWeight(FontWeight.Bold).fontSize(10)
+
+
+          }
+          .height(24)
+          .padding(5)
+
+        }
+        .alignContent(Alignment.BottomStart)
+
+        Text('法庭上根本不他让我帮他我虽然不是八十八啊人格人格股权认购FTHBRSR')
+          .maxLines(2)
+          .textOverflow({overflow:TextOverflow.Ellipsis})
+          .lineHeight(16)
+          .margin(10)
+          .fontSize(13)
+        Row(){
+          Text('10万电子')
+            .backgroundColor(Color.Orange)
+            .fontSize(13)
+
+          Blank()
+
+          Image($r('app.media.bz_more'))
+            .width(10)
+        }
+        .justifyContent(FlexAlign.Start)
+        .width('100%')
+        .padding({
+          left:10,
+          right:10
+        })
 
       }
-
-
-      Row(){
-        Image($r('app.media.position_earphone'))
-          .width(20)
-          .backgroundColor('#f0f0f0')
-          .borderRadius(10)
-          .padding(3)
-          .margin({
-            right:6
-          })
-        Text('飞狗MOCO')
-          .fontWeight(FontWeight.Bold)
-      }
-      .height(30)
-
-
-
-      Text('VIP')
-        .fontWeight(FontWeight.Bold)
-        .fontStyle(FontStyle.Italic)
-        .fontColor(Color.White)
-        .border({width:2}).borderColor(Color.White)
-        .width(40)
-        .height(20)
-        .backgroundColor(Color.Orange)
-        .borderRadius({
-          topLeft:10,
-          bottomRight:10
-        })
-        .textAlign(TextAlign.Center)
-        .position({
-          x:0,
-          y:0
-        })
-
-
-
+      .width(200)
+      .height(200)
+      .backgroundColor(Color.White)
     }
-    .height(240)
-    .width(168)
+    .width('100%')
+    .height('100%')
     .backgroundColor(Color.Pink)
 
 

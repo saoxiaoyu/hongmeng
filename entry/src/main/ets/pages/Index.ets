@@ -1,81 +1,51 @@
+
+
+
 @Entry
 @Component
-struct Index {
-  @State message: string = 'Hello';
 
+
+struct Index3 {
+  @State scroller_y :number = 0
+
+  myscroller : Scroller = new Scroller()
   build() {
-    Column(){
-      Column(){
-        Stack(){
-          Image($r('app.media.bz_img'))
-            .width(200)
-            .height(125)
-          Row(){
-            Image($r('app.media.bz_play'))
-              .width(14)
-              .fillColor(Color.White)
-            Text('288万').fontColor(Color.White).fontWeight(FontWeight.Bold).fontSize(10)
-              .margin({
-                left:3
-              })
-
-            Image($r('app.media.bz_msg'))
-              .margin({
-                left:10
-              })
-              .width(14)
-              .fillColor(Color.White)
-            Text('8655').fontColor(Color.White).fontWeight(FontWeight.Bold).fontSize(10)
-              .margin({
-                left:3,
-                right:75
-              })
-
-
-
-            Text('4:33').fontColor(Color.White).fontWeight(FontWeight.Bold).fontSize(10)
-
-
+    Column() {
+      Stack({ alignContent: Alignment.BottomEnd }) {
+        // 顶部滚动区域
+        Scroll(this.myscroller) {
+          Column() {
+            Image($r('app.media.ic_jd_scroll_01'))
+            Image($r('app.media.ic_jd_scroll_02'))
+            Image($r('app.media.ic_jd_scroll_03'))
           }
-          .height(24)
-          .padding(5)
-
         }
-        .alignContent(Alignment.BottomStart)
-
-        Text('法庭上根本不他让我帮他我虽然不是八十八啊人格人格股权认购FTHBRSR')
-          .maxLines(2)
-          .textOverflow({overflow:TextOverflow.Ellipsis})
-          .lineHeight(16)
-          .margin(10)
-          .fontSize(13)
-        Row(){
-          Text('10万电子')
-            .backgroundColor(Color.Orange)
-            .fontSize(13)
-
-          Blank()
-
-          Image($r('app.media.bz_more'))
-            .width(10)
-        }
-        .justifyContent(FlexAlign.Start)
+        .scrollBar(BarState.Off)
         .width('100%')
-        .padding({
-          left:10,
-          right:10
+        .backgroundColor(Color.Orange)
+        .onWillScroll(()=>{
+          this.scroller_y=this.myscroller.currentOffset().yOffset
         })
 
+        if (this.scroller_y>400){
+          Image($r('app.media.ic_jd_rocket'))
+            .width(40)
+            .backgroundColor(Color.White)
+            .borderRadius(20)
+            .padding(5)// .margin({right:20,bottom:20})
+            .offset({ x: -20, y: -20 })
+            .onClick(()=>{
+              this.myscroller.scrollEdge(Edge.Top)
+            })
+        }
+
+
       }
-      .width(200)
-      .height(200)
-      .backgroundColor(Color.White)
+      .layoutWeight(1)
+
+      // 底部 tabbar 图片(后面会学)
+      Image($r('app.media.ic_jd_tab'))
+        .width('100%')
     }
-    .width('100%')
-    .height('100%')
-    .backgroundColor(Color.Pink)
-
-
-
   }
 }
